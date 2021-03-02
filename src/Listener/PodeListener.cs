@@ -94,6 +94,7 @@ namespace PodeKestrel
                 {
                     socket.Listen(options);
                 }
+                options.Limits.MaxRequestBodySize = null;
             });
 
             WebHost = WebBuilder.Build();
