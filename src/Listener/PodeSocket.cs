@@ -53,6 +53,7 @@ namespace PodeKestrel
                     listenOpts.UseHttps((X509Certificate2)Certificate);
                 }
             });
+            options.AllowSynchronousIO = true;
         }
 
         public bool CheckHostname(string hostname)

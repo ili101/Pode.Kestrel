@@ -115,13 +115,13 @@ task Build BuildDeps, {
             throw 'Build Failed'
         }
 
-        dotnet publish --configuration Release --self-contained --output ../Libs
+        dotnet publish -r win-x64 --configuration Release --self-contained --output ../Libs
         if (!$?) {
             throw 'Publish Failed'
         }
 
-        exec { nuget install Microsoft.AspNetCore.App -Version 2.2.5 -OutputDirectory ../Listener/nuget }
-        (Get-ChildItem ../Listener/nuget -Filter *.dll -Recurse) | ForEach-Object { Copy-Item -Path $_.FullName -Destination ../Libs -Force }
+        # exec { nuget install Microsoft.AspNetCore.App -OutputDirectory ../Listener/nuget }
+        # (Get-ChildItem ../Listener/nuget -Filter *.dll -Recurse) | ForEach-Object { Copy-Item -Path $_.FullName -Destination ../Libs -Force }
     }
     finally {
         Pop-Location
