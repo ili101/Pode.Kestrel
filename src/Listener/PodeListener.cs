@@ -38,7 +38,7 @@ namespace PodeKestrel
             WebBuilder.ConfigureServices(services => {
                 services.AddRouting();
                 services.Configure<FormOptions>(options => {
-                    options.MultipartBodyLengthLimit = 268435456;
+                    options.MultipartBodyLengthLimit = 1099511627776;
                 });
             });
 
@@ -103,7 +103,7 @@ namespace PodeKestrel
                     socket.Listen(options);
                 }
 
-                options.Limits.MaxRequestBodySize = null;
+                options.Limits.MaxRequestBodySize = 1099511627776;
             });
 
             WebHost = WebBuilder.Build();

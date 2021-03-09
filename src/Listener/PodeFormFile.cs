@@ -24,11 +24,17 @@ namespace PodeKestrel
 
         private byte[] GetBytes()
         {
-            using (var stream = new MemoryStream())
-            {
-                FormFile.CopyTo(stream);
-                return stream.ToArray();
-            }
+            var fileName = @"C:\Temp\Up\test.exe";
+            FileStream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            FormFile.CopyTo(stream);
+            stream.Close();
+            return new Byte[0];
+            // using (var stream = new MemoryStream())
+            // {
+            //     stream.Position = 0;
+            //     FormFile.CopyTo(stream);
+            //     return stream.ToArray();
+            // }
         }
     }
 }
